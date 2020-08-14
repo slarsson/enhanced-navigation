@@ -4,9 +4,14 @@
   "description": "",
   "main": "",
   "scripts": {
+    "dev": "./node_modules/sirv-cli/bin.js ./",
+    "build": "./node_modules/terser/bin/terser --compress --output nav.min.js -- nav.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Samuel Larsson",
   "license": "ISC",
-  "dependencies": {}
+  "devDependencies": {
+    "terser": "5.1.0",
+    "sirv-cli": "1.0.6"
+  }
 }

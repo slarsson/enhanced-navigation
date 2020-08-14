@@ -1,7 +1,7 @@
 'use strict';
 
-let _appz = null;
-window.addEventListener('DOMContentLoaded', () => {_appz = new NavigationController();});
+let _app = null;
+window.addEventListener('DOMContentLoaded', () => {_app = new NavigationController();});
 
 const _progressBar = (height, color) => {
     const style = document.getElementsByTagName('style');
