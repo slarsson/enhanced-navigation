@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="hejsan svejsan..">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=block" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i&display=block" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <title>Home | Example Web Page</title>
+    <script src="site.js"></script>
+
+</head>
+
+<body>
+    <div class="gradient--top"></div>
+
+    <header>
+        <div>
+            <div>
+                <a href="./" class="logo">
+                    <svg viewBox="0 0 100 90">
+                        <polyline points="10,10 10,20 30,80 50,25 70,50 90,20 90,10 10,10 10,20"/>
+                    </svg>
+                    Example Web Page
+                </a>
+            </div>
+
+            <div>
+                <div class="burger-menu">
+                    <button id="show-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    </button>
+                </div>
+
+                <div class="nav-container" id="nav">
+                    <nav>
+                        <div>
+                            <button id="close-menu-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                            </button>
+                        </div>
+                
+                        <a href="./" class="active--header">Home</a>
+                        <a href="news.html">News</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        
+        <div class="about--index">
+                <h2>Headline H2</h2>
+                <h3>Headline H3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        </div>
+
+        <div class="latest-news news news-frontpage">
+            <h2>Latest news</h2>
+            
+                <div class="item">
+                    <div class="dd">Jun<br>3</div>
+                <div>
+                        <a href="./news-example-1.html" class="title" data-prefetch="true">Example News Post 1</a>
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..
+                            <a ref="./news-example-1.html">more</a>
+                        </p>
+                </div>
+                </div>
+            
+                <div class="item">
+                    <div class="dd">Apr<br>29</div>
+                <div>
+                        <a href="./news-example-1.html" class="title">Example News Post 1</a>
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..
+                            <a ref="./news-example-1.html">more</a>
+                        </p>
+                </div>
+                </div>
+
+                <div class="item">
+                    <div class="dd">Jan<br>16</div>
+                <div>
+                        <a href="./news-example-1.html" class="title">Example News Post 1</a>
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..
+                            <a ref="./news-example-1.html">more</a>
+                        </p>
+                </div>
+                </div>
+            
+            
+                <a href="news.html" class="all-news">
+                    All news 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
+                </a>
+            
+        </div>
+
+        <div style="clear:both;"></div>
+    </main>
+
+    <footer>
+        <div>
+            <div>
+                <h1>Example Web Page</h1>
+                &copy; 2020
+            </div>
+        
+            <div>
+                <a href="./">Home</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+    </button>
+
+    <script src="http://localhost:1337/nav.js"></script>
+</body>
+</html>

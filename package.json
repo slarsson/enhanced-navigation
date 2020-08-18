@@ -11,7 +11,7 @@
   "author": "Samuel Larsson",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.12.3",
-    "terser": "^5.1.0"
+    "http-server": "0.12.3",
+    "terser": "5.1.0"
   }
 }
