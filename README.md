@@ -1,12 +1,12 @@
 # enhanced-navigation
 This script enhances navigating between pages on a static website. It supports caching and pre-fetching of HTML-content. 
 
-This is essentially a simple implementation of Turbolinks (github.com/turbolinks/turbolinks).
+This is essentially a small and simple implementation of Turbolinks ([github.com/turbolinks/turbolinks](https://github.com/turbolinks/turbolinks)).
 
 
 ### Usage
 Add the script to all pages of a static website. 
-```
+```html
 <!doctype html>
 <html>
 
@@ -26,7 +26,7 @@ Add the script to all pages of a static website.
 
 ### Prefetch
 Add data-prefetch attribute to selected ``<a>``-tags.
-```
+```html
 <href="#" data-prefetch="true">my href</a>
 ```
 
