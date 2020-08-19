@@ -15,6 +15,10 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
             document.head.parentNode.replaceChild(doc.head, document.head);
         }
         document.body.parentNode.replaceChild(doc.body, document.body);
+        
+        if (window.onload != null) {
+            window.onload(); // meh?
+        }
     }
 
     const initProgressBar = () => {
