@@ -7,7 +7,6 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
     window.addEventListener('DOMContentLoaded', () => enhanchedNavigation.install());
     window.onpopstate = (event) => enhanchedNavigation.popstate(event);
 
-
     const inject = (html) => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
@@ -19,58 +18,27 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
     }
 
     const initProgressBar = () => {
+        let tout;
         let progress = document.createElement('div');
         progress.style.width = '0px';
         progress.style.position = 'fixed';
         progress.style.height = '3px';
         progress.style.backgroundColor = '#00a3d9';
 
-        let width = 0;
-        let current = -1;
-        let start;
-        let maxwidth = 0;
-        let speed = 0;
-        let ok = false;
-
-        const animate = (id) => {
-            if (id != current) return;
-
-            let now = window.performance.now();
-            let dt = now - start;
-            start = now; 
-
-            if (width > maxwidth) {
-                if (ok) {
-                    progress.style.opacity = '0';
-                    return;
-                }
-            } else {
-                width += dt * speed;
-                progress.style.width = `${width}px`;
-            }
-
-            requestAnimationFrame(() => animate(id)); // this is bad?
-        };
-
         return {
             start: () => {
-                progress.style.trasition = 'opacity 0ms linear';
-                progress.style.width = '0px';
+                clearTimeout(tout);
+                progress.style.transition = 'width 0s ease-out, opacity 0s ease-out';
                 progress.style.opacity = '1';
-                progress.style.transition = 'opacity 200ms linear';
-
-                ok = false;
-                current++;
-                start = window.performance.now();
-                width = -100;
-                maxwidth = 0.9 * window.innerWidth;
-                speed = maxwidth / 2000;
-                animate(current);
+                progress.style.width = '0px';
+                progress.offsetHeight; // force repaint
+                progress.style.transition = 'width 2s ease-out';
+                progress.style.width = '90%';
             },
             complete: () => {
-                ok = true;
-                maxwidth = window.innerWidth;
-                speed = maxwidth / 500;
+                progress.style.transition = 'width 0.4s ease-out, opacity 0.5s ease-out';
+                progress.style.width = '100%';
+                tout = setTimeout(() => progress.style.opacity = '0', 400);
             },
             install: () => {
                 document.documentElement.insertBefore(progress, document.body);
@@ -88,7 +56,7 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
         hostname: window.location.hostname,
         progress: initProgressBar(),
         cache: new Map(),
-        lastRequest: null,
+        lastRequest: document.location.href,
         cacheTTL: 20 * 60 * 1000 // ms
     };
 
@@ -100,11 +68,14 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
     enhanchedNavigation.handler = async function(event) {
         const url = event.currentTarget.href;
         event.preventDefault();
+        if (this.lastRequest == url) return;
         this.progress.start();
+        this.lastRequest = url;
         
         try {
             window.history.replaceState({scroll: document.documentElement.scrollTop}, '', document.location.href);
             let html = await this.get(url);
+            if (this.lastRequest != url) return;
             inject(html);
             this.progress.complete();
             window.history.pushState({scroll: 0}, '', url);
@@ -145,8 +116,12 @@ if (!('Promise' in window)) {throw 'ES6 NOT SUPPORTED, ABORT!';}
     };
 
     enhanchedNavigation.popstate = async function(event) {
+        let url = document.location.href;
         this.progress.start()
-        inject(await this.get(document.location.href));
+        this.lastRequest = url;
+        let html = await this.get(url);
+        if (this.lastRequest != url) return;
+        inject(html);
         this.progress.complete();
         window.scrollTo(0, event.state.scroll !== undefined ? event.state.scroll : 0);  
         this.hydrate();

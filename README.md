@@ -1,7 +1,7 @@
 # enhanced-navigation
 This script enhances navigating between pages on a static website. It supports caching and pre-fetching of HTML-content. 
 
-This is essentially a small and simple implementation of Turbolinks ([github.com/turbolinks/turbolinks](https://github.com/turbolinks/turbolinks)).
+> This is essentially a basic implementation of Turbolinks ([github.com/turbolinks/turbolinks](https://github.com/turbolinks/turbolinks)).
 
 
 ### Usage
@@ -41,3 +41,11 @@ Run build-script to minify nav.js (nav.js => nav.min.js)
 ```
 npm run build
 ```
+
+### Progressbar
+
+#### **enhanchedNavigation.progress.setColor(color)**
+Set the background-color of the progressbar (default #00a3d9)
+
+#### **enhanchedNavigation.progress.setHeight(height)**
+Set the height of the progressbar (default 3px)
